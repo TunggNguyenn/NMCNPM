@@ -1,0 +1,95 @@
+﻿<Window x:Class="LIMUPA.GUI.ViewBillWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LIMUPA.GUI"
+        mc:Ignorable="d"
+        Title="ViewBillWindow" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Height="500" Width="900"
+        FontFamily="Segoe UI Emoji"
+        BorderThickness="1"
+        BorderBrush="Purple">
+    <Grid>
+        <StatusBar Height="40" VerticalAlignment="Top">
+            <StatusBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/info.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="BILL" FontSize="20" Margin="5,0,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+                </Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Width="55">
+                <Button x:Name="exitButton" Click="exitButton_Click" Background="Blue" Height="34">
+                    <Image Source="/Images/x-button.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid VerticalAlignment="Top" Margin="0,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBox x:Name="searchTextBox" TextAlignment="Center" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                    <Button x:Name="searchButton" Click="searchButton_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" FontSize="20">
+                        <Image Source="/Images/search.png"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,5,0,0">
+                <ListView x:Name="billListView" MouseDoubleClick="billListView_MouseDoubleClick">
+                    <ListView.ContextMenu>
+                        <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                            <ContextMenu.BitmapEffect>
+                                <BitmapEffectGroup/>
+                            </ContextMenu.BitmapEffect>
+                            <MenuItem x:Name="editMenuItem" Header="EDIT"/>
+                            <MenuItem x:Name="removeMenuItem" Header="REMOVE"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding BillCode}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="BillCode" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ID"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding CustomerName}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="CustomerName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="CUSTOMER NAME"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Staff, Converter={StaticResource userConverter}}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="StaffName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="STAFF NAME"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="180" DisplayMemberBinding="{Binding DateTime}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="DateTime" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="DATETIME"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="180" DisplayMemberBinding="{Binding Total}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Total" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TOTAL (VNĐ)"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

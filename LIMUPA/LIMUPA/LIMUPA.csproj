@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74AA4E78-07CE-43CC-AAC0-5FED8C3CB86E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LIMUPA</RootNamespace>
+    <AssemblyName>LIMUPA</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Base, Version=19.2.91.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>..\packages\EO.Wpf.19.2.91\lib\EO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Wpf, Version=19.2.91.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <HintPath>..\packages\EO.Wpf.19.2.91\lib\EO.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.1\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.3.0.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ShowMeTheXAML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShowMeTheXAML.1.0.12\lib\net45\ShowMeTheXAML.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="GUI\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bill.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brand.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BUS_Bill.cs" />
+    <Compile Include="BUS\BUS_Expenses.cs" />
+    <Compile Include="BUS\BUS_Sale.cs" />
+    <Compile Include="Color.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\PaymentConverter.cs" />
+    <Compile Include="Converter\PermissionDescriptionConverter.cs" />
+    <Compile Include="Converter\PermissionNameConverter.cs" />
+    <Compile Include="Converter\SaleConverter.cs" />
+    <Compile Include="Converter\UserConverter.cs" />
+    <Compile Include="DAL\DAL_Bill.cs" />
+    <Compile Include="DAL\DAL_Expenses.cs" />
+    <Compile Include="DAL\DAL_Sale.cs" />
+    <Compile Include="Expens.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Good.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddItemsToCartWindow.xaml.cs">
+      <DependentUpon>AddItemsToCartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DayRevenueWindow.xaml.cs">
+      <DependentUpon>DayRevenueWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MonthSummaryWindow.xaml.cs">
+      <DependentUpon>MonthSummaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SaveUpdateNewExpensesWindow.xaml.cs">
+      <DependentUpon>SaveUpdateNewExpensesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddNewSaleWindow.xaml.cs">
+      <DependentUpon>AddNewSaleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PaymentWindow.xaml.cs">
+      <DependentUpon>PaymentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SaleGoodsInfoWindow.xaml.cs">
+      <DependentUpon>SaleGoodsInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SaleItemsWindow.xaml.cs">
+      <DependentUpon>SaleItemsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SaleWindow.xaml.cs">
+      <DependentUpon>SaleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SettingWindow.xaml.cs">
+      <DependentUpon>SettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UpdateSaleGoodsWindow.xaml.cs">
+      <DependentUpon>UpdateSaleGoodsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ViewBillWindow.xaml.cs">
+      <DependentUpon>ViewBillWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\YearSummaryWindow.xaml.cs">
+      <DependentUpon>YearSummaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyShopModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PermisionRelationship.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permission.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Size.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Type.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>MyShopModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="GUI\AddItemsToCartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\DayRevenueWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MonthSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SaveUpdateNewExpensesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\AddNewSaleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\AddNewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\AnnouncementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\GoodsInformationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\HomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="BUS\BUS_Brand.cs" />
+    <Compile Include="BUS\BUS_Color.cs" />
+    <Compile Include="BUS\BUS_Goods.cs" />
+    <Compile Include="BUS\BUS_Permision.cs" />
+    <Compile Include="BUS\BUS_PermisionRelationship.cs" />
+    <Compile Include="BUS\BUS_Size.cs" />
+    <Compile Include="BUS\BUS_Type.cs" />
+    <Compile Include="BUS\BUS_User.cs" />
+    <Compile Include="Converter\BrandConverter.cs" />
+    <Compile Include="Converter\ColorConverter.cs" />
+    <Compile Include="Converter\PriceConverter.cs" />
+    <Compile Include="Converter\SizeConverter.cs" />
+    <Compile Include="Converter\TypeConverter.cs" />
+    <Compile Include="DAL\DAL_Brand.cs" />
+    <Compile Include="DAL\DAL_Color.cs" />
+    <Compile Include="DAL\DAL_Goods.cs" />
+    <Compile Include="DAL\DAL_Permision.cs" />
+    <Compile Include="DAL\DAL_PermisionRelationship.cs" />
+    <Compile Include="DAL\DAL_Size.cs" />
+    <Compile Include="DAL\DAL_Type.cs" />
+    <Compile Include="DAL\DAL_User.cs" />
+    <Compile Include="DAL\DBConect.cs" />
+    <Compile Include="GUI\AddNewWindow.xaml.cs">
+      <DependentUpon>AddNewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AnnouncementWindow.xaml.cs">
+      <DependentUpon>AnnouncementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\GoodsInformationWindow.xaml.cs">
+      <DependentUpon>GoodsInformationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HomeWindow.xaml.cs">
+      <DependentUpon>HomeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UpdateWindow.xaml.cs">
+      <DependentUpon>UpdateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GUI\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="GUI\PaymentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SaleGoodsInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SaleItemsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SaleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SettingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\UpdateSaleGoodsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\UpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ValidationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ViewBillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\YearSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GUI\ValidationWindow.xaml.cs">
+      <DependentUpon>ValidationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyShopModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyShopModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyShopModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyShopModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="MyShopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyShopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MyShopModel.edmx.diagram">
+      <DependentUpon>MyShopModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\shopping-bag.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\trash.png" />
+    <Resource Include="Images\summary.png" />
+    <Resource Include="Images\money.png" />
+    <Resource Include="Images\analysis.png" />
+    <Resource Include="Images\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\x-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logout.png" />
+    <Resource Include="Images\warning.png" />
+    <Resource Include="Images\shoppingLogo.png" />
+    <Resource Include="Images\ao-khoac-nam-1.png" />
+    <Resource Include="Images\ao-khoac-nam-2.png" />
+    <Resource Include="Images\ao-khoac-nam-3.png" />
+    <Resource Include="Images\ao-khoac-nam-4.png" />
+    <Resource Include="Images\aolen1.jpeg" />
+    <Resource Include="Images\aolen2.jpeg" />
+    <Resource Include="Images\aolen3.jpeg" />
+    <Resource Include="Images\aolen4.jpeg" />
+    <Resource Include="Images\aosomi1.jpeg" />
+    <Resource Include="Images\aosomi2.jpeg" />
+    <Resource Include="Images\aosomi3.jpeg" />
+    <Resource Include="Images\aosomi4.jpeg" />
+    <Resource Include="Images\aothun1.jpeg" />
+    <Resource Include="Images\aothun2.jpeg" />
+    <Resource Include="Images\aothun3.jpeg" />
+    <Resource Include="Images\aothun4.jpeg" />
+    <Resource Include="Images\dam-1.png" />
+    <Resource Include="Images\dam-2.jpg" />
+    <Resource Include="Images\dam-3.jpg" />
+    <Resource Include="Images\dam-4.jpg" />
+    <Resource Include="Images\quan-jogger-1.jpg" />
+    <Resource Include="Images\quan-jogger-2.jpg" />
+    <Resource Include="Images\quan-jogger-3.jpg" />
+    <Resource Include="Images\quan-jogger-4.jpg" />
+    <Resource Include="Images\quan-tay-1.jpg" />
+    <Resource Include="Images\quan-tay-2.jpg" />
+    <Resource Include="Images\quan-tay-3.jpg" />
+    <Resource Include="Images\quan-tay-4.jpg" />
+    <Resource Include="Images\quan-the-thao-1.jpg" />
+    <Resource Include="Images\quan-the-thao-2.jpg" />
+    <Resource Include="Images\quan-the-thao-3.jpg" />
+    <Resource Include="Images\quan-the-thao-4.jpg" />
+    <Resource Include="Images\vay-1.jpg" />
+    <Resource Include="Images\vay-2.jpg" />
+    <Resource Include="Images\vay-3.jpg" />
+    <Resource Include="Images\vay-4.jpg" />
+    <Resource Include="Images\filter.png" />
+    <Resource Include="Images\info.png" />
+    <Resource Include="Images\announcement.png" />
+    <Resource Include="Images\addPicture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MyShopModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyShopModel.edmx</DependentUpon>
+      <LastGenOutput>MyShopModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MyShopModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyShopModel.edmx</DependentUpon>
+      <LastGenOutput>MyShopModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.3.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.0.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.0.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.0.0\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets" Condition="Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" />
+</Project>

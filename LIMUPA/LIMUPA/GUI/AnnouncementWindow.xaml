@@ -1,0 +1,41 @@
+﻿<Window x:Class="LIMUPA.GUI.AnnouncementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LIMUPA.GUI"
+        mc:Ignorable="d"
+        Title="AnnouncementWindow" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Height="200" Width="320"
+        FontFamily="Segoe UI Emoji"
+        BorderThickness="1"
+        BorderBrush="Purple">
+    <Grid>
+        <StatusBar Height="30" VerticalAlignment="Top">
+            <StatusBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <Label>
+                    <Image Source="/Images/announcement.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Width="55">
+                <Button x:Name="exitButton" Click="exitButton_Click" Background="Blue" Height="24">
+                    <Image Source="/Images/x-button.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+        <Label x:Name="validationLabel" HorizontalContentAlignment="Center" FontSize="18" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Red" FontFamily="Segoe UI Emoji" FontWeight="Bold">
+            <Label.Content>
+                <AccessText x:Name="validationAccessText" TextWrapping="Wrap"/>
+            </Label.Content>
+        </Label>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button x:Name="okButton" Click="okButton_Click" Content="OK" Margin="0,0,10,30" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Window>

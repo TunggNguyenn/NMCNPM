@@ -1,0 +1,88 @@
+﻿<Window x:Class="LIMUPA.GUI.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LIMUPA.GUI"
+        mc:Ignorable="d"
+         Title="Setting" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Height="350" Width="920"
+        FontFamily="Segoe UI Emoji"
+        BorderThickness="1"
+        BorderBrush="Purple">
+    <Grid>
+        <StatusBar Height="40" VerticalAlignment="Top">
+            <StatusBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/info.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="SETTING" FontSize="20" Margin="5,0,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+                </Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Width="55">
+                <Button x:Name="exitButton" Click="exitButton_Click" Background="Blue" Height="34">
+                    <Image Source="/Images/x-button.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid VerticalAlignment="Top" Margin="0,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <TextBlock Text="NHÂN SỰ" FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <ListView x:Name="staffListView">
+                    <ListView.ContextMenu>
+                        <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                            <ContextMenu.BitmapEffect>
+                                <BitmapEffectGroup/>
+                            </ContextMenu.BitmapEffect>
+                            <MenuItem x:Name="editMenuItem" Header="EDIT"/>
+                            <MenuItem x:Name="removeMenuItem" Header="REMOVE"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding NameUser}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="NameUser" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NAME USER"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID, Converter={StaticResource permissionnameConverter}}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Permission"  FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="PERMISSION"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="500" DisplayMemberBinding="{Binding ID, Converter={StaticResource permissiondescriptionConverter}}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Description" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="DESCRIPTION"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal"  HorizontalAlignment="Right">
+                <Button x:Name="okButton" Click="okButton_Click" BorderBrush="Gray" Margin="0,0,100,0" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="OK" Grid.Row="5"  HorizontalAlignment="Right"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>

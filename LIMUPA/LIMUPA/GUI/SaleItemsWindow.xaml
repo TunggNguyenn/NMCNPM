@@ -1,0 +1,117 @@
+﻿<Window x:Class="LIMUPA.GUI.SaleItemsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LIMUPA.GUI"
+        mc:Ignorable="d"
+        Title="SaleItems" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Height="550" Width="1000"
+        FontFamily="Segoe UI Emoji"
+        BorderThickness="1"
+        BorderBrush="Purple">
+    <Grid>
+        <StatusBar Height="40" VerticalAlignment="Top">
+            <StatusBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/info.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="SALE ITEMS" FontSize="20" Margin="5,0,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+                </Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Width="55">
+                <Button x:Name="exitButton" Click="exitButton_Click" Background="Blue" Height="34">
+                    <Image Source="/Images/x-button.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid VerticalAlignment="Top" Margin="0,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="380"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <TextBlock Text="SẢN PHẨM NHẬP TỪ " FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                    <TextBlock x:Name="importdateTextBlock" TextAlignment="Center" Text="" Width="150" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                    <TextBlock Text="ĐẾN " FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                    <TextBlock x:Name="nowdateTextBlock" TextAlignment="Center" Text="" Width="150" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+
+
+
+            <Grid Grid.Row="1">
+                <ListView x:Name="goodsListView">
+                    <ListView.ContextMenu>
+                        <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                            <ContextMenu.BitmapEffect>
+                                <BitmapEffectGroup/>
+                            </ContextMenu.BitmapEffect>
+                            <MenuItem x:Name="saleMenuItem" Header="SALE" Click="saleMenuItem_Click"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding GoodsCode}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="GoodsCode" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ID"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding GoodsName}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="GoodsName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NAME"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Brand, Converter={StaticResource brandConverter}}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Brand" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="BRAND"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding Number}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NUMBER"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="120" DisplayMemberBinding="{Binding Price}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Price" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="PRICE (VNĐ)"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                            <GridViewColumn Width="150">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Picture" FontWeight="Bold" Foreground="Red" Content="PICTURE"/>
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Margin="50,0,0,0" Source="{Binding Picture}" Height="50" Width="50"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Sale, Converter={StaticResource saleConverter}}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TYPE"/>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal"  HorizontalAlignment="Right">
+                <Button x:Name="okButton" Click="okButton_Click" BorderBrush="Gray" Margin="0,0,100,0" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="OK" Grid.Row="5"  HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>

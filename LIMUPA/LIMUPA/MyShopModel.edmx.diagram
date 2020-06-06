@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d0ccdaf38ad4d8489032d9bedaedd91" Name="Diagram1">
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Bill" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Brand" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Color" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Expens" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Good" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.PermisionRelationship" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Permission" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Sale" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Size" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.Type" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShop_SQLServerModel.User" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_Bill_Goods" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_Bill_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_Goods_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_Goods_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_Goods_Sale" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_Goods_Size" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_Goods_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_PermisionRelationship_Permission" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShop_SQLServerModel.FK_PermisionRelationship_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

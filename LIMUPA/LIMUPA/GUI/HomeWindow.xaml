@@ -1,0 +1,766 @@
+﻿<Window x:Class="LIMUPA.GUI.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LIMUPA.GUI"
+        mc:Ignorable="d"
+        Title="LIMUPA" Icon="/Images/shoppingLogo.png" 
+        RenderOptions.BitmapScalingMode="HighQuality"
+        WindowState="Maximized" ResizeMode="NoResize"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Grid>
+        <StatusBar Height="40" VerticalAlignment="Top">
+            <StatusBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <Label>
+                    <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+                        <Image Source="/Images/shoppingLogo.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="LIMUPA" FontSize="18" Margin="5,0,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+                </Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="settingButton" Click="settingButton_Click" Margin="0,0,5,0" Background="Blue" Height="34">
+                        <Image Source="/Images/setting.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button>
+                    <Button x:Name="logoutButton" Click="logoutButton_Click" Margin="0,0,5,0" Background="Blue" Height="34">
+                        <Image Source="/Images/logout.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button>
+                    <Button x:Name="exitButton" Click="exitButton_Click" Margin="5,0,0,0" Background="Blue" Height="34">
+                        <Image Source="/Images/x-button.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl FontSize="30" Margin="0,40,0,0">
+            <TabControl.Resources>
+                <Style TargetType="TabControl">
+                    <Setter Property="BorderBrush">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Color="Orange"  Offset="0.0"/>
+                                <GradientStop Color="Blue"  Offset="0.5"/>
+                                <GradientStop Color="Purple"  Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderThickness" Value="5"/>
+                </Style>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="10,10,0,0" Margin="2,0">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                    <GradientStop Color="Purple"  Offset="0.0"/>
+                                                    <GradientStop Color="DarkOrange"  Offset="0.5"/>
+                                                    <GradientStop Color="Purple" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="Blue"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="SELL"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2.5*"/>
+                            <ColumnDefinition Width="7.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="50" Height="50" Source="/Images/shopping-bag.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                <TextBlock x:Name="id1TextBlock" Text="ID: " TextAlignment="Center" Foreground="Red" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock x:Name="id2TextBlock" Text="" TextAlignment="Center" Foreground="Blue" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </StackPanel>
+                        </Label>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <TextBlock Text="COMPANY NAME: " FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                <TextBlock Text="CÔNG TY TNHH LIMUPA" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <TextBlock Text="CUSTOMER NAME: " FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                <TextBox x:Name="customernameTextBox" Text=""  FontSize="15" HorizontalContentAlignment="Center"  Foreground="Blue" Width="300" FontWeight="Bold"/>
+                                <TextBlock Text="PHONE NUMBER: " FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                <TextBox x:Name="phonenumberTextBox" Text=""  FontSize="15" HorizontalContentAlignment="Center" Foreground="Blue" Width="150" FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                <TextBlock Text="ADDRESS: " FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                <TextBox x:Name="addressTextBox" Text=""  FontSize="15" HorizontalContentAlignment="Center"  Foreground="Blue" Width="800" FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                                <TextBlock Text="STAFF NAME: " FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                <TextBlock x:Name="staffnameTextBlock" Text="" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="264*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="73*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border CornerRadius="6" BorderBrush="Blue" BorderThickness="2" Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBox x:Name="searchTextBox" TextAlignment="Center" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                                        <Button x:Name="searchButton" Click="searchButton_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" FontSize="20">
+                                            <Image Source="/Images/search.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="365*"/>
+                                        <ColumnDefinition Width="159*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ListView x:Name="goodsListView" Grid.ColumnSpan="2">
+                                        <ListView.ContextMenu>
+                                            <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                                                <ContextMenu.BitmapEffect>
+                                                    <BitmapEffectGroup/>
+                                                </ContextMenu.BitmapEffect>
+                                                <MenuItem x:Name="removeMenuItem" Header="REMOVE" Click="removeMenuItem_Click"/>
+                                            </ContextMenu>
+                                        </ListView.ContextMenu>
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding GoodsCode}">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="GoodsCode" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ID"/>
+                                                    </GridViewColumn.Header>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding GoodsName}">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="GoodsName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NAME"/>
+                                                    </GridViewColumn.Header>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="80" DisplayMemberBinding="{Binding ID_Color, Converter={StaticResource colorConverter}}">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="Color" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="COLOR"/>
+                                                    </GridViewColumn.Header>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="150" DisplayMemberBinding="{Binding ID_Brand, Converter={StaticResource brandConverter}}">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="Brand" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="BRAND"/>
+                                                    </GridViewColumn.Header>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding Price}">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="Price" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="PRICE (VNĐ)"/>
+                                                    </GridViewColumn.Header>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="180">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="Picture" FontWeight="Bold" Foreground="Red" Content="PICTURE"/>
+                                                    </GridViewColumn.Header>
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Image Margin="50,0,0,0" Source="{Binding Picture}" Height="50" Width="50"/>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Sale, Converter={StaticResource saleConverter}}">
+                                                    <GridViewColumn.Header>
+                                                        <GridViewColumnHeader Tag="Sale" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SALE"/>
+                                                    </GridViewColumn.Header>
+                                                </GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
+                                <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock Text="TOTAL NUMBER OF ITEMS: " Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                    <TextBlock x:Name="numberTextBlock" Text="{Binding ElementName=goodsListView, Path=Items.Count}"  Width="30" TextAlignment="Center" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                                    <TextBlock Text="TOTAL: " Margin="200,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                    <TextBlock x:Name="totalTextBlock" Text="0" Width="200" TextAlignment="Center" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                                    <TextBlock x:Name="curencyunitTextBlock" Text="VNĐ" TextAlignment="Center" FontSize="20" Foreground="Red"  FontWeight="Bold"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border CornerRadius="6" BorderBrush="Blue" BorderThickness="2" Grid.Column="1" Grid.ColumnSpan="2">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="TIỀN KHÁCH ĐƯA: " Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox x:Name="cashTextBox" TextChanged="cashTextBox_TextChanged" Text="0" Width="250" Margin="10,0,10,0" BorderBrush="Black" TextAlignment="Right" BorderThickness="2" FontSize="20" Foreground="Blue"  FontWeight="Bold"/>
+                                    <TextBlock Text="(VNĐ)" TextAlignment="Center" Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="TRẢ LẠI KHÁCH: " Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                    <TextBlock x:Name="changeTextBlock" Margin="10,0,0,0" FontSize="20" Foreground="Blue" FontWeight="Bold">
+                                        <TextBlock.Text>
+                                            <MultiBinding Converter="{StaticResource paymentConverter}">
+                                                <Binding ElementName="cashTextBox" Path="Text" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                                <Binding ElementName="totalTextBlock" Path="Text" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Text="(VNĐ)" TextAlignment="Center" Margin="10,0,0,0" FontSize="20" Foreground="Red" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Height="375" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Calendar BorderBrush="Red" BorderThickness="2"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,25,20,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="cancelbillButton" Click="cancelbillButton_Click" Width="60" Height="40" Margin="0,0,20,0">
+                                        <StackPanel>
+                                            <Image Source="/Images/trash.png" Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="doneButton" Click="doneButton_Click" Content="HOÀN THÀNH" Width="160" Height="40" FontWeight="Bold"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="SEARCH"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="41*"/>
+                        <ColumnDefinition Width="713*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                        <Button x:Name="viewbillButton" Click="viewbillButton_Click" HorizontalAlignment="Left" Width="100" Background="Green" BorderBrush="Gray" BorderThickness="2" Content="BILL" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBox x:Name="searchTextBox1" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                            <Button x:Name="searchButton1" Click="searchButton1_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
+                        </StackPanel>
+                        <Button x:Name="refreshButton1" HorizontalAlignment="Right" Click="refreshButton1_Click" BorderBrush="Gray" BorderThickness="2" Content="Refresh" FontWeight="Bold" Foreground="Red" Margin="0,0,10,0"/>
+                    </Grid>
+
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,5,0,0" Grid.ColumnSpan="2">
+                        <Image Source="/Images/filter.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5,5,0,0"/>
+                        <TextBlock Text="FILTER" Foreground="Red" FontWeight="Bold" FontSize="25" Margin="5,5,20,0"/>
+
+                        <TextBlock Text="Color: " FontSize="25" Margin="5,5,0,0"/>
+                        <ComboBox x:Name="cmbColors1" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Rectangle Fill="{Binding ColorName}" Margin="0,0,5,0" Stroke="Black" StrokeThickness="1" Height="30" Width="30"/>
+                                        <TextBlock Text="{Binding ColorName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Brand: " FontSize="25" Margin="20,5,0,0"/>
+                        <ComboBox x:Name="cmbBrands1" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding BrandName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Price: " FontSize="25" Margin="20,5,0,0"/>
+                        <TextBox x:Name="minimumPrice1" PreviewMouseLeftButtonDown="minimumPrice1_PreviewMouseLeftButtonDown" Text="minimum" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBlock Text=" - " FontSize="25"/>
+                        <TextBox x:Name="maximumPrice1" PreviewMouseLeftButtonDown="maximumPrice1_PreviewMouseLeftButtonDown" Text="maximum" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                        <TextBlock Text="Type: " FontSize="25" Margin="20,5,0,0"/>
+                        <ComboBox x:Name="cmbTypes1" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TypeName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Size: " FontSize="25" Margin="20,5,0,0"/>
+                        <ComboBox x:Name="cmbSizes1" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SizeName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Button x:Name="filterButton1"  Click="filterButton1_Click" BorderBrush="Gray" BorderThickness="2" Content="Filter" FontWeight="Bold" Foreground="Red" Margin="50,0,10,0"/>
+                    </StackPanel>
+
+                    <Grid Grid.Row="2" Margin="0,5,0,0" Grid.ColumnSpan="2">
+                        <ListView x:Name="goodsListView1" MouseDoubleClick="goodsListView1_MouseDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Blue" BorderThickness="5">
+                                        <StackPanel Width="150" Height="150" Margin="20">
+                                            <Image Margin="5" Source="{Binding Picture}" Width="80" Height="80" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                            <Border BorderBrush="{x:Null}" Height="30">
+                                                <TextBlock FontSize="14" TextWrapping="Wrap" Text="{Binding GoodsName}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" FontWeight="Bold"/>
+                                            </Border>
+                                            <Border BorderBrush="{x:Null}" Height="30">
+                                                <TextBlock FontSize="14" TextWrapping="Wrap" Text="{Binding Price, Converter={StaticResource priceConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" FontWeight="Bold"/>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="UPDATE"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Button x:Name="addNewButton" Click="addNewButton_Click" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBox x:Name="searchTextBox2" Text="" TextChanged="searchTextBox2_TextChanged" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                            <Button x:Name="searchButton2" Click="searchButton2_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
+                        </StackPanel>
+                        <Button x:Name="refreshButton2" Click="refreshButton2_Click" HorizontalAlignment="Right" BorderBrush="Gray" BorderThickness="2" Content="Refresh" FontWeight="Bold" Foreground="Red" Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,5,0,0">
+                        <Image Source="/Images/filter.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="5,5,0,0"/>
+                        <TextBlock Text="FILTER" Foreground="Red" FontWeight="Bold" FontSize="25" Margin="5,5,20,0"/>
+
+                        <TextBlock Text="Color: " FontSize="25" Margin="5,5,0,0"/>
+                        <ComboBox x:Name="cmbColors2" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Rectangle Fill="{Binding ColorName}" Margin="0,0,5,0" Stroke="Black" StrokeThickness="1" Height="30" Width="30"/>
+                                        <TextBlock Text="{Binding ColorName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Brand: " FontSize="25" Margin="20,5,0,0"/>
+                        <ComboBox x:Name="cmbBrands2" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding BrandName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Price: " FontSize="25" Margin="20,5,0,0"/>
+                        <TextBox x:Name="minimumPrice2" Text="minimum" PreviewMouseLeftButtonDown="minimumPrice2_PreviewMouseLeftButtonDown" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBlock Text=" - " FontSize="25"/>
+                        <TextBox x:Name="maximumPrice2" Text="maximum" PreviewMouseLeftButtonDown="maximumPrice2_PreviewMouseLeftButtonDown" Width="80" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                        <TextBlock Text="Type: " FontSize="25" Margin="20,5,0,0"/>
+                        <ComboBox x:Name="cmbTypes2" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TypeName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Size: " FontSize="25" Margin="20,5,0,0"/>
+                        <ComboBox x:Name="cmbSizes2" Width="120">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SizeName}" FontWeight="Bold" Width="100" FontSize="20"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Button x:Name="filterButton2" Click="filterButton2_Click" BorderBrush="Gray" BorderThickness="2" Content="Filter" FontWeight="Bold" Foreground="Red" Margin="50,0,10,0"/>
+                    </StackPanel>
+
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <ListView x:Name="goodsListView2" MouseDoubleClick="goodsListView2_MouseDoubleClick">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding GoodsCode}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="GoodsCode" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ID"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding GoodsName}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="GoodsName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NAME"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding ID_Color}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Color" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="COLOR"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Brand}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Brand" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="BRAND"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding ID_Size}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Size" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SIZE"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="85" DisplayMemberBinding="{Binding ID_Type}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Type" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TYPE"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Price}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Price" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="PRICE (VNĐ)"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Number}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NUMBER"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="280">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Picture" FontWeight="Bold" Foreground="Red" Content="PICTURE"/>
+                                        </GridViewColumn.Header>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Margin="50,0,0,0" Source="{Binding Picture}" Height="150" Width="150"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="saleTabItem" Visibility="Visible">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="SALE"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Button x:Name="addNewSaleButton" Click="addNewSaleButton_Click" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW SALE"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="159,2,222,2">
+                            <TextBox x:Name="searchTextBox3" Text="" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                            <Button x:Name="searchButton3" Click="searchButton3_Click" BorderBrush="Gray" BorderThickness="2" Foreground="Red" FontWeight="Bold" Content="SEARCH" FontSize="20"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="goodsListView3" MouseDoubleClick="goodsListView3_MouseDoubleClick" Margin="0,0,10,0">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding GoodsCode}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="GoodsCode" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ID"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding GoodsName}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="GoodsName" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NAME"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding ID_Brand}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Brand" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="BRAND"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Price}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Price" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="PRICE (VNĐ)"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Number}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Number" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="NUMBER"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="280">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Picture" FontWeight="Bold" Foreground="Red" Content="PICTURE"/>
+                                        </GridViewColumn.Header>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Margin="50,0,0,0" Source="{Binding Picture}" Height="150" Width="150"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                            <ListView.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.ContainerStyle>
+                                        <Style TargetType="{x:Type GroupItem}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <Expander IsExpanded="False">
+                                                            <Expander.Header>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding Name,  Converter={StaticResource saleConverter}}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Bottom" />
+                                                                    <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                                    <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Bottom" />
+                                                                </StackPanel>
+                                                            </Expander.Header>
+                                                            <ItemsPresenter />
+                                                        </Expander>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </GroupStyle.ContainerStyle>
+                                </GroupStyle>
+                            </ListView.GroupStyle>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="expensesTabItem" Visibility="Visible">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="EXPENSES"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Button x:Name="addNewExpensesButton" Click="addNewExpensesButton_Click" Height="40" Background="Green" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Width="180" Content="ADD NEW EXPENSES" Grid.ColumnSpan="2"/>
+                            <Border Grid.Row="0" Margin="180,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="6" BorderBrush="Blue" BorderThickness="5">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Label>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/analysis.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" Height="40"/>
+                                            <TextBlock Text="EXPENSES"  Margin="5,0,0,0" Foreground="Red" FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </Label>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                        <Border Grid.Row="1" CornerRadius="6" BorderBrush="Blue" BorderThickness="5">
+                            <Grid>
+                                <ListView x:Name="goodsListView4" Margin="0,0,10,0">
+                                    <ListView.ContextMenu>
+                                        <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                                            <ContextMenu.BitmapEffect>
+                                                <BitmapEffectGroup/>
+                                            </ContextMenu.BitmapEffect>
+                                            <MenuItem x:Name="editMenuItem" Header="EDIT" Click="editMenuItem_Click"/>
+                                            <MenuItem x:Name="deleteMenuItem" Header="DELETE" Click="deleteMenuItem_Click"/>
+                                        </ContextMenu>
+                                    </ListView.ContextMenu>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding DateTime}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="DateTime" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="DateTime"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Electric}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Electric" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="ELECTRIC"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Water}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Water" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="WATER"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Rent_Premises}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="RentPremises" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="RENT PREMISES"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding SalaryStaff}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="SalaryStaff" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="SALARY STAFF"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Goods}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Goods" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="GOODS"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="140" DisplayMemberBinding="{Binding Total}">
+                                                <GridViewColumn.Header>
+                                                    <GridViewColumnHeader Tag="Total" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Content="TOTAL"/>
+                                                </GridViewColumn.Header>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Border Grid.Column="1" CornerRadius="6" BorderBrush="Black" BorderThickness="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" CornerRadius="6" BorderBrush="Blue" BorderThickness="5">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Label>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/summary.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" Height="40"/>
+                                            <TextBlock Text="SUMMARY"  Margin="5,0,0,0" Foreground="Red" FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </Label>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Grid.Row="1" Margin="5,5,5,5" CornerRadius="6" BorderBrush="Green" BorderThickness="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2.5*"/>
+                                        <RowDefinition Height="2.5*"/>
+                                        <RowDefinition Height="2.5*"/>
+                                        <RowDefinition Height="2.5*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Text="REVENUE: " VerticalAlignment="Center" Margin="5,0,0,0" Foreground="DarkViolet" FontSize="20" FontWeight="Bold"/>
+
+                                    <StackPanel Grid.Row="1"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button x:Name="daylyrevenueBtn" Click="daylyrevenueBtn_Click" Content="DAY" Width="100" Height="40" FontWeight="Bold"/>
+                                        <DatePicker x:Name="dayrevenueDatePicker" Width="180" Height="40" FontSize="30" Foreground="Blue" Margin="5,0,0,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button x:Name="monthlyrevenueBtn" Click="monthlyrevenueBtn_Click" Content="MONTH"  Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock  Text="YEAR: " Width="80" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
+                                        <TextBox x:Name="monthrevenueTextBox" Width="80" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="3"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button x:Name="yearlyrevenueBtn" Click="yearlyrevenueBtn_Click" Content="YEAR"  Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="(FROM 2015 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <Border Grid.Row="2" Margin="5,5,5,5" CornerRadius="6" BorderBrush="Green" BorderThickness="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3*"/>
+                                        <RowDefinition Height="3*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Text="PROFIT: " VerticalAlignment="Center" Margin="5,0,0,0" Foreground="DarkViolet" FontSize="20" FontWeight="Bold"/>
+
+                                    <StackPanel Grid.Row="1"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button x:Name="monthlyprofitBtn" Click="monthlyprofitBtn_Click" Content="MONTH" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="YEAR: " Width="80" Height="40" FontSize="30" Foreground="Red" Margin="10,0,0,0"/>
+                                        <TextBox x:Name="monthprofitTextBox" Width="80" TextAlignment="Center" Height="40" FontSize="30" Foreground="Blue" Margin="15,0,0,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2"  Margin="0,0,50,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button x:Name="yearlyprofitBtn" Click="yearlyprofitBtn_Click" Content="YEAR" Width="100" Height="40" FontWeight="Bold"/>
+                                        <TextBlock Text="(FROM 2015 TO NOW)" Width="180" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Red" Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

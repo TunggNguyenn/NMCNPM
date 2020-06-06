@@ -1,0 +1,56 @@
+﻿<Window x:Class="LIMUPA.GUI.MonthSummaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LIMUPA.GUI"
+        mc:Ignorable="d"
+        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+        Title="MonthSummary" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Height="600" Width="1000"
+        FontFamily="Segoe UI Emoji"
+        BorderThickness="1"
+        BorderBrush="Purple">
+    <Grid>
+        <StatusBar Height="40" VerticalAlignment="Top">
+            <StatusBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/info.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="MONTH SUMMARY" FontSize="20" Margin="5,0,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+                </Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Width="55">
+                <Button x:Name="exitButton" Click="exitButton_Click" Background="Blue" Height="34">
+                    <Image Source="/Images/x-button.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid VerticalAlignment="Top" Margin="0,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <DVC:Chart x:Name="monthsummaryChart" Title="" Foreground="Red" FontWeight="Bold" Height="450" Width="700" Background="LightBlue" BorderBrush="Red" BorderThickness="2" RenderOptions.BitmapScalingMode="HighQuality">
+                    <DVC:Chart.Series>
+                        <DVC:LineSeries x:Name="captionChart" Title="" RenderOptions.BitmapScalingMode="HighQuality" IndependentValueBinding="{Binding Path=Key}" DependentValuePath="Value"/>
+                    </DVC:Chart.Series>
+                </DVC:Chart>
+            </StackPanel>
+
+
+            <Button Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,80,0" x:Name="okButton" Click="okButton_Click" Height="40" FontWeight="Bold" Width="200" Content="OK"/>
+        </Grid>
+    </Grid>
+</Window>

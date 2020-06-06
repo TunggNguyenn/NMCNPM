@@ -1,0 +1,93 @@
+﻿<Window x:Class="LIMUPA.GUI.SaveUpdateNewExpensesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LIMUPA.GUI"
+        mc:Ignorable="d"
+        Title="AddNewExpenses" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Height="350" Width="1000"
+        FontFamily="Segoe UI Emoji"
+        BorderThickness="1"
+        BorderBrush="Purple">
+    <Grid>
+        <StatusBar Height="40" VerticalAlignment="Top">
+            <StatusBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/info.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="ADD NEW EXPENSES" FontSize="20" Margin="5,0,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+                </Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Width="55">
+                <Button x:Name="exitButton" Click="exitButton_Click" Background="Blue" Height="34">
+                    <Image Source="/Images/x-button.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid VerticalAlignment="Top" Margin="0,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="DATE:   " Margin="10,0,0,0" FontWeight="Bold" Foreground="Red" FontSize="30"/>
+                <DatePicker Name="date" Width="180" Height="40" FontSize="30" Foreground="Blue" Margin="5,0,0,0"/>
+                <TextBlock Text="TOTAL:   " Margin="250,0,0,0" FontWeight="Bold" Foreground="Red" FontSize="30"/>
+                <TextBlock x:Name="totalTextBlock" Text="0" Width="200" TextAlignment="Center" FontStyle="Italic" Foreground="Blue" FontSize="26"/>
+                <TextBlock  Text="(VNĐ)"  FontStyle="Italic" Foreground="Red" FontSize="26"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="ELECTRIC:   " Width="180" Margin="10,0,0,0" FontWeight="Bold" Foreground="Red" FontSize="30"/>
+                <TextBox x:Name="electricTextBox"  Text="0" TextChanged="electricTextBox_TextChanged" Width="200" TextAlignment="Center" FontStyle="Italic" Foreground="Blue" FontSize="26"/>
+                <TextBlock  Text="(VNĐ)"  FontStyle="Italic" Foreground="Red" FontSize="26"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="WATER:   " Width="180" Margin="10,0,0,0" FontWeight="Bold" Foreground="Red" FontSize="30"/>
+                <TextBox x:Name="waterTextBox"  Text="0" TextChanged="waterTextBox_TextChanged" Width="200" TextAlignment="Center" FontStyle="Italic" Foreground="Blue" FontSize="26"/>
+                <TextBlock  Text="(VNĐ)"  FontStyle="Italic" Foreground="Red" FontSize="26"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="PREMISES:   " Width="180" Margin="10,0,0,0" FontWeight="Bold" Foreground="Red" FontSize="30"/>
+                <TextBox x:Name="premisesTextBox" Text="0" TextChanged="premisesTextBox_TextChanged" Width="200" TextAlignment="Center" FontStyle="Italic" Foreground="Blue" FontSize="26"/>
+                <TextBlock  Text="(VNĐ)"  FontStyle="Italic" Foreground="Red" FontSize="26"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="SALARY:   " Width="180" Margin="10,0,0,0" FontWeight="Bold" Foreground="Red" FontSize="30"/>
+                <TextBox x:Name="salaryTextBox" Text="0" TextChanged="salaryTextBox_TextChanged" Width="200" TextAlignment="Center" FontStyle="Italic" Foreground="Blue" FontSize="26"/>
+                <TextBlock  Text="(VNĐ)"  FontStyle="Italic" Foreground="Red" FontSize="26"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="GOODS:   " Width="180" Margin="10,0,0,0" FontWeight="Bold" Foreground="Red" FontSize="30"/>
+                <TextBox x:Name="goodsTextBox" TextChanged="goodsTextBox_TextChanged" Text="0" Width="200" TextAlignment="Center" FontStyle="Italic" Foreground="Blue" FontSize="26"/>
+                <TextBlock  Text="(VNĐ)"  FontStyle="Italic" Foreground="Red" FontSize="26"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="saveButton" Click="saveButton_Click" Margin="0,0,30,0" Background="Green" BorderBrush="Gray" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="SAVE"  VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <Button x:Name="updateButton" Click="updateButton_Click" Visibility="Collapsed" Margin="0,0,30,0" Background="Green" BorderBrush="Gray" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="UPDATE"  VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <Button x:Name="cancelButton" Click="cancelButton_Click"  Margin="0,0,50,0" BorderBrush="Gray" BorderThickness="2" Height="40" FontWeight="Bold" Width="120" Content="CANCEL"  VerticalAlignment="Center"  HorizontalAlignment="Right"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
